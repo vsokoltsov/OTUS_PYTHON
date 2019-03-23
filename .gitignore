@@ -8,3 +8,5 @@ logfile
 httptest
 .env
 wsgi_app
+__pycache__
+media
