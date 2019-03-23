@@ -1,0 +1,5 @@
+log
+reports
+*.pyc
+logfile
+.DS_Store
