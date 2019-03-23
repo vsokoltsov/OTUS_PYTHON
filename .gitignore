@@ -6,3 +6,5 @@ logfile
 *.pyc
 *.rdb
 httptest
+.env
+wsgi_app
