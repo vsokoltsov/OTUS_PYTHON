@@ -5,3 +5,4 @@ logfile
 .DS_Store
 *.pyc
 *.rdb
+httptest
