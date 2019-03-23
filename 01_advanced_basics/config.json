@@ -1,0 +1,6 @@
+{
+  "report_size": 1001,
+  "report_dir": "./reports_1",
+  "log_dir": "./logs_1",
+  "TS_PATH": "./log.ts"
+}

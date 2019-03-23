@@ -1,0 +1,3 @@
+report_size: 1001
+report_dir: ./reports
+log_dir: ./logs

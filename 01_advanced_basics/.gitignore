@@ -1,0 +1,4 @@
+log
+reports
+*.pyc
+logfile
