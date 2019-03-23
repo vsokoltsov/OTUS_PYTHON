@@ -1,0 +1,12 @@
+[Unit]
+Description=uWSGI instance to weather checker
+
+[Service]
+ExecStartPre=-/usr/bin/bash -c 'mkdir -p /run/uwsgi; chown root:nginx /run/uwsgi'
+ExecStart=/usr/bin/bash -c 'cd /wsgi_daemon; source wsgi_app/bin/activate; uwsgi --ini app.ini'
+StandardOutput=/var/log/daemon/access.log
+StandardError=/var/log/daemon/error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
