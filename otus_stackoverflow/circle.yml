@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            touch .env
+            echo "USER=$USER" >> .env
+            echo "HOST=$HOST" >> .env
+            echo "PASSWORD=$PASSWORD" >> .env
+            echo "APP_SECRET=$APP_SECRET" >> .env
+            echo "JWT_SECRET=$JWT_SECRET" >> .env
+            pip install docker-compose==1.15.0
+      - run:
+          name: Run tests
+          command: |
+            docker-compose run otus_stackoverflow bash -c "python manage.py test"

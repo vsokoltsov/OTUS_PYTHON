@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  otus_stackoverflow_db:
+    container_name: otus_stackoverflow_db
+    image: postgres
+    environment:
+      POSTGRES_DB: 'otus_stackoverflow'
+    volumes:
+      - /var/lib/postgresql/otus/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  otus_stackoverflow:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - DEFAULT_REQUIREMENTS=development.txt
+    volumes:
+      - .:/root/otus_stackoverflow
+    env_file: ./.env
+    environment:
+      - DJANGO_DEFAULT_ENV=development
+    image: vsokoltsov/otus_stackoverflow
+    container_name: otus_stackoverflow
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - '8000:8000'
+    depends_on:
+      - otus_stackoverflow_db
+      - chromedriver
+
+  chromedriver:
+      image: selenium/standalone-chrome
+      ports:
+        - "4444:4444"
